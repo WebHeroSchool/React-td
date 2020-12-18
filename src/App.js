@@ -1,9 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
+import { count, length } from './number.js';
 
-const count = 40;
-const flag = true;
-const ring = false;
+const result = count * length;
 
 function App() {
   return (
@@ -18,20 +17,7 @@ function App() {
           fontSize: 45
         }}> Hello World!
         </p>
-        <p style={{
-          fontSize: 10+10
-          }}> Hello World!
-        </p>
-        <p>{count}
-        </p>
-        <p>
-          {flag && 'Flag is true'}
-          {undefined}
-          {null}
-          {false}
-          {true}
-        </p>
-        <p> {ring ? 'Ring is true' : 'Ring is false'}
+        <p>{result}
         </p>
         <a
           className="App-link"
