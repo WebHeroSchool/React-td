@@ -2,6 +2,9 @@ import React from 'react';
 import ItemList from '../ItemList/ItemList';
 import InputItems from '../InputItems/InputItems';
 import Footer from '../Footer/Footer';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+
 import styles from './App.module.css';
 
 const App = () => {
@@ -22,10 +25,14 @@ const App = () => {
 
      return (
     <div className={styles.wrap}>
-        <h1> Список дел: </h1>
-        <InputItems />
-        <ItemList items={items} />
-        <Footer count={3} />
+        <Card>
+            <CardContent>
+                <h1> Список дел: </h1>
+                <InputItems />
+                <ItemList items={items} />
+                <Footer count={3} />
+            </CardContent>
+       </Card>
     </div>);
 }
 
