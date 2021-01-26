@@ -8,34 +8,35 @@ import CardContent from '@material-ui/core/CardContent';
 import styles from './App.module.css';
 
 class App extends React.Component {
+    state = {
+      items: [
+          {
+             value: 'Написать новое приложение',
+             isDone: true
+          },
+          {
+             value: 'props',
+             isDone: true
+          },
+          {
+            value: 'сделать урок',
+            isDone: false
+          }
+      ]
+    };
   render () {
-    const items = [
-        {
-           value: 'Написать новое приложение',
-           isDone: true
-        },
-        {
-           value: 'props',
-           isDone: true
-        },
-        {
-          value: 'сделать урок',
-          isDone: false
-        }
-    ];
-
-    return (
-   <div className={styles.wrap}>
-       <Card>
-           <CardContent>
-               <h1> Список дел: </h1>
-               <InputItems />
-               <ItemList items={items} />
-               <Footer count={3} />
-           </CardContent>
-      </Card>
-   </div>);
-  }
+      return (
+          <div className={styles.wrap}>
+              <Card>
+                  <CardContent>
+                      <h1> Список дел: </h1>
+                      <InputItems />
+                      <ItemList items={this.state.items} />
+                      <Footer count={3} />
+                  </CardContent>
+              </Card>
+          </div>);
+    }
 };
 
 export default App;
