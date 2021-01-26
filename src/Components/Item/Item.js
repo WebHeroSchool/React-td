@@ -13,11 +13,12 @@ const styles = {
   }
 };
 
-const Item = ({ value, isDone, classes }) => (
-    <ListItem>
+const Item = ({ value, isDone, classes, onClickDone }) => (
+    <ListItem fullWidth>
       <Checkbox
             checked={isDone}
             tabIndex={-1}
+            onClick={() => console.log(isDone)}
           />
           <ListItemText primary={value} classes={{
             root: isDone && classes.done
