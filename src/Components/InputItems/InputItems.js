@@ -36,7 +36,7 @@ class InputItems extends React.Component {
            >
                 Добавить
            </Button>
-        </Grid>
+        </Grid>);
     }
 }
 
