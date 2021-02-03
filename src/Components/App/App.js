@@ -50,10 +50,10 @@ class App extends React.Component {
           {
               value,
               isDone: false,
-              id: state.count - 1
+              id: state.count + 1
           }
       ],
-      count: state.count - 1
+      count: state.count + 1
   }));
 
   render () {

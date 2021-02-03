@@ -5,19 +5,45 @@ import Grid from '@material-ui/core/Grid';
 
 class InputItems extends React.Component {
     state = {
-        inputValue: ''
+        inputValue: '',
+        helperText: '',
+        isError: false
+    };
+
+    onChangeInputItem = (event) => {
+
+      this.setState({
+         inputValue: event.target.value,
+         isError: (this.state.isError && this.valueCheck(this.state.inputValue)),
+         helperText: !(this.state.isError && this.valueCheck(this.state.inputValue) ? '' : 'Введите текст')
+      })
+    };
+
+    valueCheck = (value) => {
+      if (value === '') {
+        return false;
+      } else {
+        return true;
+      }
     };
 
     onButtonClick = () => {
+      if (!this.valueCheck(this.state.inputValue)) {
+        this.setState({
+          helperText: 'Введите текст',
+          isError: true
+        });
+
+      } else {
         this.setState({
           inputValue: ''
         });
 
         this.props.onClickAdd(this.state.inputValue);
+      }
     }
 
     render() {
-        const { onClickAdd } = this.props;
 
         return (<Grid>
             <TextField
@@ -26,13 +52,15 @@ class InputItems extends React.Component {
                 margin='dense'
                 fullWidth
                 value={this.state.inputValue}
-                onChange={event => this.setState({ inputValue: event.target.value})}
+                onChange={(event) => this.onChangeInputItem(event)}
+                helperText={this.state.helperText}
+                error={this.state.isError}
             />
             <Button
                 variant='contained'
                 color='primary'
                 fullWidth
-                onClick={() => onClickAdd(this.state.inputValue)}
+                onClick={() => this.onButtonClick()}
            >
                 Добавить
            </Button>
