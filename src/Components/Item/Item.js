@@ -14,8 +14,23 @@ const styles = {
   }
 };
 
-const Item = ({ value, isDone, classes, onClickDone, id, onClickDelete }) => (
-    <ListItem>
+class Item extends React.Component {
+  componentDidMount () {
+    console.log('componentDidMount');
+  }
+
+  componentDidUpdate () {
+    console.log('componentDidUpdate');
+  }
+
+  componentWillUnmount() {
+    console.log('componentWillUnmount');
+  }
+
+  render () {
+    const { value, isDone, classes, onClickDone, id, onClickDelete } = this.props;
+
+    return (<ListItem>
       <Checkbox
             checked={isDone}
             tabIndex={-1}
@@ -30,6 +45,8 @@ const Item = ({ value, isDone, classes, onClickDone, id, onClickDelete }) => (
             </IconButton>
       </ListItemSecondaryAction>
     </ListItem>);
+  }
+}
 
 Item.propTypes = {
      id: PropTypes.number.isRequired,
