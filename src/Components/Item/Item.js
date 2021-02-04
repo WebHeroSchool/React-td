@@ -30,4 +30,8 @@ const Item = ({ value, isDone, classes, onClickDone, id, onClickDelete }) => (
       </ListItemSecondaryAction>
     </ListItem>);
 
+    Item.defaultProps = {
+      value: 'Что делать?'
+    }
+
 export default withStyles(styles)(Item);
