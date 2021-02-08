@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import ItemList from '../ItemList/ItemList';
 import InputItems from '../InputItems/InputItems';
 import Footer from '../Footer/Footer';
@@ -7,8 +7,9 @@ import CardContent from '@material-ui/core/CardContent';
 
 import styles from './App.module.css';
 
-class App extends React.Component {
-    state = {
+const App = () => {
+    const initialState = {
+
       items: [
           {
              value: 'Написать новое приложение',
@@ -29,9 +30,19 @@ class App extends React.Component {
       count: 3
     };
 
-  onClickDone = id => {
-      const newItemList = this.state.items.map(item => {
-          const newItem = {...item };
+  const [items, setItems] = useState(initialState.items);
+  const [count, setCount] = useState(initialState.count);
+
+    useEffect( () => {
+      console.log('update');
+    });
+    useEffect( () => {
+      console.log('mount');
+    }, []);
+
+    const onClickDone = id => {
+        const newItemList = items.map(item => {
+            const newItem = { ...item};
 
           if (item.id === id) {
               newItem.isDone = !item.isDone;
@@ -39,40 +50,46 @@ class App extends React.Component {
 
           return newItem;
       });
-      this.setState({ items: newItemList });
-  };
 
-  onClickDelete = id => this.setState(state => ({ items: state.items.filter (item => item.id !== id)}));
+      setItems(newItemList);
+     };
 
-  onClickAdd = value => this.setState(state => ({
-      items: [
-          ...state.items,
-          {
-              value,
-              isDone: false,
-              id: state.count + 1
-          }
-      ],
-      count: state.count + 1
-  }));
+     const onClickDelete = (id) => {
+         const newItemList = items.filter(item => item.id !==id);
 
-  render () {
+         setItems(newItemList);
+         setCount((count) => count - 1)
+       };
+
+       const onClickAdd = (value) => {
+           const newItemList = [
+               ...items,
+                   {
+                      value,
+                      isDone: false,
+                      id: count + 1
+                    }
+           ];
+           setItems(newItemList);
+           setCount((count) => count + 1)
+       };
+
       return (
           <div className={styles.wrap}>
               <Card>
                   <CardContent>
                       <h1> Список дел: </h1>
-                      <InputItems onClickAdd={this.onClickAdd}/>
+                      <InputItems onClickAdd={onClickAdd}/>
                       <ItemList
-                          items={this.state.items}
-                          onClickDone={this.onClickDone}
-                          onClickDelete={this.onClickDelete}
+                          items={items}
+                          onClickDone={onClickDone}
+                          onClickDelete={onClickDelete}
                       />
-                      <Footer count={this.state.count}/>
+                      <Footer count={count}/>
                   </CardContent>
               </Card>
           </div>);
-    }
-};
+    };
+
 
 export default App;
