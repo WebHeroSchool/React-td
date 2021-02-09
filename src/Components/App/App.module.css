@@ -1,5 +1,26 @@
+body {
+  padding-top: 10px;
+  background: #eee;
+  font-family: Helvetica;
+}
+
  .wrap {
+   display: grid;
+   grid-template-areas: 'sidebar ...content content';
    margin: auto;
    width: 500px;
-   font-family: Helvetica;
  }
+
+ .link {
+   text-decoration: none;
+   cursor: pointer;
+   color: #000;
+ }
+
+ .sidebar {
+   grid-area: sidebar;
+ }
+
+.content {
+  grid-area: content;
+}
