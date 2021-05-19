@@ -1,5 +1,5 @@
 body {
-  padding-top: 10px;
+  padding-top: 50px;
   background: #eee;
   font-family: Helvetica;
 }
@@ -9,7 +9,9 @@ body {
    grid-template-areas: 'sidebar ...content content';
    margin: auto;
    width: 500px;
+   background-color: #00FFFF;
  }
+
 
  .link {
    text-decoration: none;
@@ -19,8 +21,14 @@ body {
 
  .sidebar {
    grid-area: sidebar;
+   border-color: red;
  }
 
 .content {
   grid-area: content;
+}
+
+@font-face {
+   font-family: 'pt_serifbold_italic';
+   src: local('pt_serifbold_italic'), url(./fonts/ptserif-bolditalic-webfont.woff) format('woff');
 }

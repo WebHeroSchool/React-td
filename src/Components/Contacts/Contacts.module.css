@@ -1,3 +1,16 @@
 .wrap {
      padding: 15px;
+     align-items: center;
  }
+
+ .title {
+   font: bold 24px 'pt_serifbold_italic', arial, Helvetica, sans-serif;
+   margin: 0;
+   text-align: center;
+   text-decoration: underline;
+ }
+
+ @font-face {
+    font-family: 'pt_serifbold_italic';
+    src: local('pt_serifbold_italic'), url(./fonts/ptserif-bolditalic-webfont.woff) format('woff');
+}
