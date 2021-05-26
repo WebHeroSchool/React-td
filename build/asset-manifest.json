@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/React-td/static/css/main.94d7a769.chunk.css",
+    "main.js": "/React-td/static/js/main.2b94658f.chunk.js",
+    "main.js.map": "/React-td/static/js/main.2b94658f.chunk.js.map",
+    "runtime-main.js": "/React-td/static/js/runtime-main.104f9db5.js",
+    "runtime-main.js.map": "/React-td/static/js/runtime-main.104f9db5.js.map",
+    "static/js/2.2ff27687.chunk.js": "/React-td/static/js/2.2ff27687.chunk.js",
+    "static/js/2.2ff27687.chunk.js.map": "/React-td/static/js/2.2ff27687.chunk.js.map",
+    "index.html": "/React-td/index.html",
+    "static/css/main.94d7a769.chunk.css.map": "/React-td/static/css/main.94d7a769.chunk.css.map",
+    "static/js/2.2ff27687.chunk.js.LICENSE.txt": "/React-td/static/js/2.2ff27687.chunk.js.LICENSE.txt",
+    "static/media/Error.09d96759.svg": "/React-td/static/media/Error.09d96759.svg",
+    "static/media/Star.66a6657c.svg": "/React-td/static/media/Star.66a6657c.svg",
+    "static/media/Stroke.a232545d.svg": "/React-td/static/media/Stroke.a232545d.svg",
+    "static/media/add.18e1da29.svg": "/React-td/static/media/add.18e1da29.svg",
+    "static/media/item.module.css": "/React-td/static/media/checked.24734c72.svg",
+    "static/media/delete.deb0a029.svg": "/React-td/static/media/delete.deb0a029.svg",
+    "static/media/github.263c290c.svg": "/React-td/static/media/github.263c290c.svg",
+    "static/media/mail.f4eb023e.svg": "/React-td/static/media/mail.f4eb023e.svg",
+    "static/media/ItemList.module.css": "/React-td/static/media/noItems.642af47c.svg",
+    "static/media/Todo.module.css": "/React-td/static/media/roboto-regular-webfont.4e741de4.woff",
+    "static/media/telefon.e3f0d75e.svg": "/React-td/static/media/telefon.e3f0d75e.svg",
+    "static/media/App.module.css": "/React-td/static/media/whs-logo.2032b0e3.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.104f9db5.js",
+    "static/js/2.2ff27687.chunk.js",
+    "static/css/main.94d7a769.chunk.css",
+    "static/js/main.2b94658f.chunk.js"
+  ]
+}

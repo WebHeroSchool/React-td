@@ -63,7 +63,7 @@ class Repositories extends React.Component {
                     <img src={ errorImg } alt='Error' className={styles.error_img} />
                     <h2 className={styles.error_subtitle}>Что-то пошло совсем не так...</h2>
                     <p className={styles.error_text}>Попытка
-                      <a href='' onClick={() => window.location.reload()} className={styles.error_link}> загрузить </a>
+                      <a href="#" onClick={() => window.location.reload()} className={styles.error_link}> загрузить </a>
                     еще раз</p>
                   </div> :
                     <div>
