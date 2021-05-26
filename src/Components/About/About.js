@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './About.module.css';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Octokit } from '@octokit/rest';
-import { makeStyles } from '@material-ui/core/styles';
+
 import Card from '@material-ui/core/Card';
 import Repositories from '../Repositories/Repositories';
 import emailImg from './img/mail.svg';
@@ -56,7 +56,7 @@ class About extends React.Component {
                         <img className={styles.contact__img} src={ emailImg } alt='Email'></img>
                         annamt17@gmail.com
                       </a>
-											<a className={styles.contact} href=''>
+											<a className={styles.contact} href="#">
                         <img className={styles.contact__img} src={ teleImg } alt='Telefon'></img>
                         +7 (495) 999-99-99
                       </a>
