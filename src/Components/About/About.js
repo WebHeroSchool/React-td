@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './About.module.css';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Octokit } from '@octokit/rest';
-
+import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import Repositories from '../Repositories/Repositories';
 import emailImg from './img/mail.svg';

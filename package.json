@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://webheroschool.github.io/React-td/",
   "dependencies": {
+    "@material-ui/styles": "^4.11.4",
     "@octokit/rest": "^18.1.0",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
