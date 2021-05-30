@@ -1,34 +1,86 @@
 body {
-  padding-top: 50px;
-  background: #eee;
-  font-family: Helvetica;
+  background: #E5E5E5;
 }
 
- .wrap {
-   display: grid;
-   grid-template-areas: 'sidebar ...content content';
-   margin: auto;
-   width: 500px;
-   background-color: #00FFFF;
- }
+.wrap {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 100%;
+  max-width: 700px;
+}
 
+.header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 87px;
+  margin-bottom: 10px;
+}
 
- .link {
-   text-decoration: none;
-   cursor: pointer;
-   color: #000;
- }
+.school_link {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+}
 
- .sidebar {
-   grid-area: sidebar;
-   border-color: red;
- }
+.school_logo {
+  position: absolute;
+  left: 0;
+  top: 40%;
+  transform: translate(0, -40%);
+  width: 100px;
+  height: 50px;
+  background: url(./img/whs-logo.svg) no-repeat;
+}
 
-.content {
-  grid-area: content;
+.header__link {
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  font: 700 16px/19px 'robotobold', arial, helvetica, sans-serif;
+  padding: 12px 32px;
+  color: #000;
+}
+
+.header__link_active {
+  background: #356EFF;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
+  border-radius: 37px;
+  color: #fff;
+}
+
+.header__link:hover,
+.header__link_active:hover {
+  opacity: .8;
+  transition: .3s;
 }
 
 @font-face {
-   font-family: 'pt_serifbold_italic';
-   src: local('pt_serifbold_italic'), url(./fonts/ptserif-bolditalic-webfont.woff) format('woff');
+    font-family: 'robotobold';
+    src: url('./fonts/roboto-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'robotoregular';
+    src: url('./fonts/roboto-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@media (max-width: 530px) {
+  .school_link,
+  .school_logo {
+    display: none;
+  }
+}
+
+@media (max-height: 736px) {
+  .header {
+    height: 60px;
+  }
 }

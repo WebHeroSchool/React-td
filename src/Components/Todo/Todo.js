@@ -1,94 +1,106 @@
-import React, {useState, useEffect} from 'react';
-import ItemList from '../ItemList/ItemList';
-import InputItems from '../InputItems/InputItems';
-import Footer from '../Footer/Footer';
+import React, { useState, useEffect } from 'react';
 import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-
+import InputItem from '../InputItem/InputItem';
+import ItemList from '../ItemList/ItemList';
+import Sort from '../Sort/Sort';
 import styles from './Todo.module.css';
+import { DragDropContext } from 'react-beautiful-dnd';
 
 const Todo = () => {
-    const initialState = {
-
-      items: [
-          {
-             value: 'Написать новое приложение',
-             isDone: true,
-             id: 1
-          },
-          {
-             value: 'props',
-             isDone: true,
-             id: 2
-          },
-          {
-            value: 'сделать урок',
-            isDone: false,
-            id: 3
-          }
-      ],
-      count: 3
-    };
+  const initialState = {
+    items: JSON.parse(localStorage.getItem('items')) || [],
+    filter: "all"
+  }
 
   const [items, setItems] = useState(initialState.items);
-  const [count, setCount] = useState(initialState.count);
+  const [filter, setFilter] = useState(initialState.filter);
 
-    useEffect( () => {
-      console.log('update');
+  useEffect(() => {
+    localStorage.setItem('items', JSON.stringify(items));
+  });
+
+  const onClickDone = id => {
+    const newItemList = items.map(item => {
+      const newItem = { ...item};
+
+      if (item.id === id) {
+        newItem.isDone = !item.isDone;
+      }
+
+      return newItem;
     });
-    useEffect( () => {
-      console.log('mount');
-    }, []);
 
-    const onClickDone = id => {
-        const newItemList = items.map(item => {
-            const newItem = { ...item};
+    setItems(newItemList);
+  };
 
-          if (item.id === id) {
-              newItem.isDone = !item.isDone;
-          }
+  const onClickDelete = id => {
+    const newItemList = items.filter(item => item.id !== id);
+  
+    setItems(newItemList);
+  }
 
-          return newItem;
-      });
+  const onClickAdd = (value) => {
+    setItems([
+      ...items,
+      {
+        value,
+        isDone: false,
+        id: Date.now()
+      }
+    ]);
+  }
 
-      setItems(newItemList);
-     };
+  const onClickFilter = filter => {
+    setFilter(filter)
+  };
 
-     const onClickDelete = (id) => {
-         const newItemList = items.filter(item => item.id !==id);
+  let filteredTasks = [];
+  switch (filter) {
+    case 'active':
+      filteredTasks = items.filter(item => !item.isDone);
+      break;
+    case 'done':
+      filteredTasks = items.filter(item => item.isDone);
+      break;
+    case 'all':
+      filteredTasks = items;
+      break;
+    default:
+      filteredTasks = items;
+  };
 
-         setItems(newItemList);
-         setCount((count) => count - 1)
-       };
+  const onDragEnd = result => {
+    const { destination, source } = result;
+    if (!destination) return;
+    
+    const newItemList = [...items];
+    const [deletedItem] = newItemList.splice(source.index, 1);
+    newItemList.splice(destination.index, 0, deletedItem);
 
-       const onClickAdd = (value) => {
-           const newItemList = [
-               ...items,
-                   {
-                      value,
-                      isDone: false,
-                      id: count + 1
-                    }
-           ];
-           setItems(newItemList);
-           setCount((count) => count + 1)
-       };
+    setItems([...newItemList]);
+  };
 
-      return (
-          <div className={styles.wrap}>
-              <Card>
-                  <CardContent>
-                      <h1> Список дел: </h1>
-                      <InputItems onClickAdd={onClickAdd}/>
-                      <ItemList
-                          items={items}
-                          onClickDone={onClickDone}
-                          onClickDelete={onClickDelete}
-                      />
-                      <Footer count={count}/>
-                  </CardContent>
-              </Card>
-          </div>);
-    };
+  return (
+    <Card className={styles.wrap}>
+      <DragDropContext onDragEnd={onDragEnd}>
+        <header className={styles.header}>
+          <h1 className={styles.title}>Список моих дел</h1>
+          <Sort
+            items={items}
+            filter={filter}
+            onClickFilter={onClickFilter} />
+        </header>
+        <div className={styles.items_section}>
+          <ItemList
+            items={filteredTasks} 
+            onClickDone={onClickDone} 
+            onClickDelete={onClickDelete} />
+          <InputItem
+            items={items}
+            onClickAdd={onClickAdd} />
+        </div>
+      </DragDropContext>  
+    </Card>);
+};
 
 export default Todo;
